@@ -1,0 +1,34 @@
+﻿@page
+@model IndexModel
+@using LazZiya.TagHelpers
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <form method="get" class="form-inline">
+        <input asp-for="Q" class="form-control" />
+
+        <button type="submit" class="btn btn-primary">Search</button>
+        <input type="hidden" asp-for="S" />
+    </form>
+    <h2>Name List</h2>
+    <ul>
+        @foreach (var name in Model.ViewModels)
+        {
+            <li>@name</li>
+        }
+    </ul>
+</div>
+
+
+<div class="justify-content-md-center">
+    <paging page-no="Model.P"
+            page-size="Model.S"
+            total-records="Model.TotalRecords"
+            show-page-size-nav="false"
+            show-total-pages="false"
+            show-total-records="false">
+    </paging>
+</div>
